@@ -15,8 +15,7 @@ const allowedOrigins = [
 const bootstrap = (app, express) => {
   app.use(
     cors({
-      origin: allowedOrigins,
-      credentials: true,
+      origin: allowedOrigins
     })
   );
 

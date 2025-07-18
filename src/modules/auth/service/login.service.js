@@ -17,9 +17,9 @@ export const login = asyncHandler(async (req, res, next) => {
   if (!user) {
     return next(new Error("In-valid login data", { cause: 404 }));
   }
-  // if (!user.confirmEmail) {
-  //   return next(new Error("please confim your email first", { cause: 400 }));
-  // }
+  if (!user.confirmEmail) {
+    return next(new Error("please confim your email first", { cause: 400 }));
+  }
   const match = compareHash({ plainText: password, hashValue: user.password });
   if (!match) {
     return next(new Error("In-valid login data", { cause: 404 }));

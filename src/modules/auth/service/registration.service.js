@@ -36,6 +36,7 @@ export const signup = asyncHandler(async (req, res, next) => {
     phone: encryptPhone,
     role,
   });
+  
   emailEvent.emit("sendConfirmEmail", { email });
   return sucessResponseHandling({
     res,

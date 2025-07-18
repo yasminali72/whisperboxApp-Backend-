@@ -12,10 +12,11 @@ const allowedOrigins = [
   "https://whisperbox-app.vercel.app",
 ];
 
-const bootstrap = (app, express) => {
+const bootstrap = async (app, express) => {
+  await connectDB();
   app.use(
     cors({
-      origin: allowedOrigins
+      origin: allowedOrigins,
     })
   );
 
@@ -34,8 +35,6 @@ const bootstrap = (app, express) => {
   });
 
   app.use(globalErrorHandling);
-
-  connectDB();
 };
 
 export default bootstrap;
